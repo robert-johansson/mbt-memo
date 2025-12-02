@@ -34,6 +34,7 @@ def balanced_prior(mental_state):
 
 @jax.jit
 def action_likelihood(action, mental_state):
+    # rows = mental_state, cols = action
     matrix = np.array([
         [0.6, 0.3, 0.1],   # doesn't care
         [0.3, 0.5, 0.2],   # neutral

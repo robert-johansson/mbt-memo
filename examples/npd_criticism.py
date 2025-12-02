@@ -41,6 +41,7 @@ def realistic_prior(interpretation):
 @jax.jit
 def critique_likelihood(critique, interpretation):
     """P(critique | interpretation)"""
+    # rows = interpretation, cols = critique
     matrix = np.array([
         [0.1, 0.5, 0.4],   # valid: likely to voice
         [0.3, 0.5, 0.2],   # minor: might mention

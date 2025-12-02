@@ -40,6 +40,7 @@ def secure_prior(intention):
 @jax.jit
 def behavior_likelihood(behavior, intention):
     """P(behavior | intention)"""
+    # rows = intention, cols = behavior
     matrix = np.array([
         [0.7, 0.2, 0.1],   # rejecting
         [0.3, 0.5, 0.2],   # busy
@@ -169,7 +170,8 @@ if __name__ == "__main__":
     ax.set_xlabel('Stress level')
     ax.set_title('Stress -> Psychic equivalence')
     ax.set_ylim(0, 1)
-    ax.axhline(y=float(bpd_prior(0)), color='gray', linestyle='--', label='Prior')
+    ax.axhline(y=float(bpd_prior(0)), color='gray', linestyle='--', label='BPD Prior')
+    ax.axhline(y=float(secure_post[0]), color='steelblue', linestyle=':', label='Secure posterior')
     ax.legend()
 
     ax = axes[1, 0]
